@@ -1,0 +1,25 @@
+##file opener##
+count=0
+total=0
+file=input("Enter Your File Name")
+try:
+    openfile=open(file)
+except:
+    print("Couldn't Find File",file)
+    quit()
+##Line Reader###
+for line in openfile:
+    if line.startswith("UNIT COST:"):
+        count=count+1
+        position=line.find(":")
+        piece=line[position+1:]
+        cleanedpiece=piece.strip()
+        number=float(cleanedpiece)
+        total=total+number
+##Average Computation&Garment Proccesing##
+if count>0:
+    average=total/count
+    garmentsproccesed=count
+    print("Garments Proccesed:",garmentsproccesed,"\nAverage Production Cost:",average)
+else:
+    print("No Garment Costs Found:")
